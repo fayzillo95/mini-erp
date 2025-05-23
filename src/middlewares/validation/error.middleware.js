@@ -1,0 +1,1 @@
+// error.middleware.js - Placeholder content

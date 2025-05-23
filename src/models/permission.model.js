@@ -1,0 +1,1 @@
+// permission.model.js - Placeholder content

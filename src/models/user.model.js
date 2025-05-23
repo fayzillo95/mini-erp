@@ -1,0 +1,1 @@
+// user.model.js - Placeholder content

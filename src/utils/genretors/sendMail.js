@@ -1,0 +1,1 @@
+// sendMail.js - Placeholder content
