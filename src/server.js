@@ -1,8 +1,17 @@
-import { logger } from "./utils/genretors/logger.js";
+import 'dotenv/config';
+import express from "express"
 
-try {
-    davdoa()    
-} catch (error) {
-    logger.info("User logs");
-    logger.error(error.message,error.stack);
+const server = express()
+
+server.use(express.json())
+
+const application = async () => {
+    const dbStatus = ""
+    const port = process.env.PORT
+    const host = process.env.HOST
+    if (dbStatus) {
+        server.listen(port,console.log(`http:${host}:${port}`))
+    }else{
+        console.log(dbStatus,"Internal server error !")
+    }
 }
