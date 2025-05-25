@@ -1,9 +1,8 @@
 // user.validator.js - Placeholder content
 
 import Joi from "joi";
-import { actions, birthdayTest, models, namRegex } from "../utils/resurs/modelComponentes/userComponentes.js";
+import { actions, birthdayTest, models, namRegex } from "../resurs/modelComponentes/userComponentes.js";
 import { isValidObjectId } from 'mongoose'
-import CustomError from "../utils/eroors/custom.error.js";
 
 function isObjectId(value, helpers) {
     if (isValidObjectId(value)) {

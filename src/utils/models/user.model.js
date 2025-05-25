@@ -1,7 +1,7 @@
 // user.model.js - Placeholder content
 
 import { model, Schema } from "mongoose";
-import { namRegex } from "../utils/resurs/modelComponentes/userComponentes.js";
+import { namRegex } from "../resurs/modelComponentes/userComponentes.js";
 
 export default model("User", new Schema({
     first_name:{
@@ -16,7 +16,8 @@ export default model("User", new Schema({
     },
     email:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     password:{
         type:String,

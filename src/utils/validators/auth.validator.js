@@ -1,14 +1,14 @@
 import permissionModel from "../models/permission.model.js";
 import userModel from "../models/user.model.js";
-import AuthorizationError from "../utils/eroors/authorzation.error.js";
-import CustomError from "../utils/eroors/custom.error.js";
+import AuthorizationError from "../eroors/authorzation.error.js";
+import CustomError from "../eroors/custom.error.js";
 
 export default class AuthValidation {
     constructor() { }
 
     static roleValidation(req, res, next, ...roles) {
         try {
-            const user = userModel.findById({ _id: req.user.id })
+            const user = userModel.findById({ _id: req.userData.id })
             if (!user) {
                 throw new CustomError(404, "User not found !")
             }
@@ -22,10 +22,11 @@ export default class AuthValidation {
     }
     static permissionValidation(req, res, next) {
         try {
-            const user = userModel.findById({ _id: req.user.id })
+            const user = userModel.findById({ _id: req.userData.id })
             if (!user) {
                 throw new CustomError(404, "User not found !")
             }
+
             const collection = req.url.split("/").at(-1)
             const permissions = permissionModel.findOne({
                 user_id: user._id,
@@ -37,6 +38,7 @@ export default class AuthValidation {
             if (!permissions.actions.includes(req.method)) {
                 throw new AuthorizationError(406, `${user.first_name} ${collection} ${req.method} not allowed !`)
             }
+            next()
         } catch (error) {
             next(error)
         }

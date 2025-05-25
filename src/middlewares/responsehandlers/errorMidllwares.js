@@ -1,6 +1,7 @@
-import { logger } from "../../utils/genretors/logger.js"
+import { logger } from "../../utils/genretors/logger.js";
 
 export default (err, req, res, next) => {
+    
     if (err.status) {
         logger.info(err.message)
         return res.status(err.status).json({
@@ -8,12 +9,14 @@ export default (err, req, res, next) => {
             status: err.status,
             message: err.message
         })
-    }
+    };
 
-    logger.error(err.message,err.stack)
-    return res.status(err.status).json({
+    logger.error(err.message);
+
+    return res.status(500).json({
         success: false,
         status: 500,
         message: "Internal server error !"
-    })
-}
+    });
+
+};

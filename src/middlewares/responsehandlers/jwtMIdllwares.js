@@ -1,8 +1,13 @@
 import { generateToken } from "../../utils/genretors/generateToken.js"
 
-export default (user) => {
-    const secret = process.env.JWT_SECRET
-    const result = generateToken(user)
-    return result
+export default (req, res, next) => {
+    
+    try {
+        const result = generateToken(req.userData);
+        res.status(req.status || 200).json(result)
+    } catch (error) {
+        next(error)
+    };
+
 }
 

@@ -1,6 +1,6 @@
 // permission.model.js - Placeholder content
 import { Schema, model, models } from "mongoose";
-import { actions } from "../utils/resurs/modelComponentes/userComponentes.js";
+import { actions } from "../resurs/modelComponentes/userComponentes.js";
 
 export default model("Permission", new Schema({
     user_id: {
