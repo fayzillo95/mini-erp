@@ -50,9 +50,3 @@ export const birthdayTest = (birthDay) => {
     return true;
 };
 
-
-try {
-    console.log(birthdayTest('2025-02-28'))
-} catch (error) {
-    console.log(error.message)
-}

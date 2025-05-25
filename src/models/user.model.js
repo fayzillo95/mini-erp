@@ -1,7 +1,7 @@
 // user.model.js - Placeholder content
 
 import { model, Schema } from "mongoose";
-import { namRegex } from "../utils/resurs/modelComponentes/checkBirtday.js";
+import { namRegex } from "../utils/resurs/modelComponentes/userComponentes.js";
 
 export default model("User", new Schema({
     first_name:{
@@ -29,4 +29,4 @@ export default model("User", new Schema({
         type:String,
         required:true
     }
-}))
+}));

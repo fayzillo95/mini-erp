@@ -1,4 +1,13 @@
 import 'dotenv/config'
+import { isValidObjectId } from 'mongoose'
+
+
+
+
+
+console.log(isValidObjectId("6630a3ccf0e0f8a2a199c112"))
+
+
 // import sendVerifikatsiy from './utils/genretors/sendMail.js'
 // import { logger } from './utils/genretors/logger.js'
 // import { decodeToken } from './utils/genretors/generateToken.js'
