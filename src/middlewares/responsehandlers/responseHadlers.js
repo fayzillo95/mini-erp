@@ -1,10 +1,16 @@
-export default (req, res, next) => {
+export const responseHadlers =  (req, res, next) => {
     try {
-        res.status(req.status || 200).json({
-            success:true,
-            data:req.userData,
-            message:req.resultMessage || "Operation compileated !"
-        })
+        if (typeof req.userData != "string") {
+            res.status(req.status || 200).json({
+                success: true,
+                data: req.userData,
+            })
+        } else {
+            res.status(req.status || 200).json({
+                success: true,
+                message: req.userData,
+            })
+        }
     } catch (error) {
         next(error)
     }

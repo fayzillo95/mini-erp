@@ -1,6 +1,6 @@
 import { generateToken } from "../../utils/genretors/generateToken.js"
 
-export default (req, res, next) => {
+export const jwtMIdllwares = (req, res, next) => {
     
     try {
         const result = generateToken(req.userData);

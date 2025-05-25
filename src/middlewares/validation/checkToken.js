@@ -10,7 +10,7 @@ export default (req, res, next) => {
         }
         const token = authorization.split(" ")[1]
         let decodeUser = decodeToken(token)
-        req.userData = {id:decodeUser.id,role:decodeUser.role}
+        req.userData = {id:decodeUser.id}
         next()
     } catch (error) {
         if(error.name == "TokenExpiredError" || error.name == "JsonWebTokenError"){

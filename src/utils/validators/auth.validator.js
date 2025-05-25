@@ -6,9 +6,9 @@ import CustomError from "../eroors/custom.error.js";
 export default class AuthValidation {
     constructor() { }
 
-    static roleValidation(req, res, next, ...roles) {
+    static async roleValidation(req, res, next, ...roles) {
         try {
-            const user = userModel.findById({ _id: req.userData.id })
+            const user = await userModel.findById({ _id: req.userData.id })
             if (!user) {
                 throw new CustomError(404, "User not found !")
             }
@@ -20,15 +20,16 @@ export default class AuthValidation {
             next(error)
         }
     }
-    static permissionValidation(req, res, next) {
+    static async permissionValidation(req, res, next) {
         try {
-            const user = userModel.findById({ _id: req.userData.id })
+            let {id} = req.userData
+            const user = await userModel.findById(id)
             if (!user) {
                 throw new CustomError(404, "User not found !")
             }
 
             const collection = req.url.split("/").at(-1)
-            const permissions = permissionModel.findOne({
+            const permissions = await permissionModel.findOne({
                 user_id: user._id,
                 model: collection,
                 branch_id: req.body.branch_id
